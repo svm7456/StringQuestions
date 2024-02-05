@@ -1,0 +1,55 @@
+class Solution {
+    public String sortSentence(String s) {
+           String [] str = s.split(" ");
+		  int len = str.length;
+		  String [] alph = new String[len];
+		  String [] digit = new String[len];
+		  int [] digit1 = new int[len];
+          for(int i = 0;i < str.length; i++){
+              int j = 0;
+              String s3 = str[i];
+              System.out.println(s3);
+              int k =0;
+        	  int idx = 0;
+        	  while(k < s3.length()){
+        	     char ch = s3.charAt(k);
+        	     boolean a = Character.isDigit(ch);
+        	       if(a == true){
+        	          idx = k;
+        	          break;
+        	       }
+        	        k++;
+        	   }
+        	   alph[i] = s3.substring(0,idx);
+               alph[i] = alph[i];
+        	   digit[i] = s3.substring(idx);
+        	   digit[i] = digit[i];
+            }
+            for(int i = 0;i<digit.length;i++){
+                int ele=Integer.parseInt(digit[i]);   
+                digit1[i] = ele;
+                
+            }
+            for(int i = 0; i< digit1.length; i++){
+              for(int j = 0; j < digit1.length-1-i;j++ ){
+                      if(digit1[j] > digit1[j+1]){
+                          int temp = digit1[j];
+                          digit1[j] = digit1[j+1];
+                          digit1[j+1] = temp;
+                          String temp1 = alph[j];
+                          alph[j] = alph[j+1];
+                          alph[j+1] = temp1;
+                        }
+                }
+            }
+            int length = alph.length;
+            StringBuffer sb = new StringBuffer();
+            for(int i = 0; i < alph.length-1; i++) {
+                sb.append(alph[i]+" ");  
+            }
+            String last = alph[length-1];
+            sb.append(last);
+            String str1= sb.toString(); 
+            return str1;      
+    }
+}
